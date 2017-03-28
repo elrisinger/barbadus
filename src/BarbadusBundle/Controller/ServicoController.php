@@ -27,6 +27,8 @@ class ServicoController extends Controller
 
         $servicos = $em->getRepository('BarbadusBundle:Servico')->findAll();
 
+       
+        
         return $this->render('BarbadusBundle:Servico:index.html.twig', array(
             'servicos' => $servicos,
         ));
@@ -40,8 +42,11 @@ class ServicoController extends Controller
      */
     public function newAction(Request $request)
     {
+        
         $servico = new Servico();
+                
         $form = $this->createForm('BarbadusBundle\Form\ServicoType', $servico);
+        
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -77,7 +82,7 @@ class ServicoController extends Controller
     /**
      * Displays a form to edit an existing servico entity.
      *
-     * @Route("/{id}/edit", name="servico_edit")
+     * @Route("/edit/{id}", name="servico_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Servico $servico)

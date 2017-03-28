@@ -3,16 +3,16 @@
 {% form_theme form "bootstrap_3_horizontal_layout.html.twig" %}
 
 {% block body %}
-    <h1>Servico creation</h1>
-
+    
+    <h1>Novo Serviço</h1>
+    
+   
+    <div class="col-md-8">
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+        <input type="submit" value="Salvar" class="btn btn-success pull-right" />
     {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('servico_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    
+    </div>
+  
 {% endblock %}

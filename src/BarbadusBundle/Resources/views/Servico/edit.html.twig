@@ -3,21 +3,18 @@
 {% form_theme edit_form "bootstrap_3_horizontal_layout.html.twig" %}
 
 {% block body %}
-    <h1>Servico edit</h1>
+    <h1>Editar Serviço</h1>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+    <div class="col-md-8">
+        {{ form_start(edit_form) }}
+            {{ form_widget(edit_form) }}
+            <input type="submit" value="Salvar"  class="btn btn-success pull-right"/>
+        {{ form_end(edit_form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('servico_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        {{ form_start(delete_form) }}
+        <input type="submit" value="Deletar" class="btn btn-danger">
+        {{ form_end(delete_form) }}
+    </div>
+   
+    
 {% endblock %}
