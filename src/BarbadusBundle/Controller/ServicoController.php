@@ -21,12 +21,17 @@ class ServicoController extends Controller
      * @Route("/", name="servico_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
+        $ordenar = $request->get('ordenar');
+        
+        $ordenar = ($ordenar != "") ? $ordenar : "nome";
+        
         $em = $this->getDoctrine()->getManager();
 
-        $servicos = $em->getRepository('BarbadusBundle:Servico')->findAll();
-
+        //$servicos = $em->getRepository('BarbadusBundle:Servico')->findAll();
+        $servicos = $em->getRepository('BarbadusBundle:Servico')
+                ->findBy(array(), array($ordenar => "ASC"));
        
         
         return $this->render('BarbadusBundle:Servico:index.html.twig', array(

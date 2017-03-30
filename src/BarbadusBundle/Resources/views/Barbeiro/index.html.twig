@@ -1,0 +1,43 @@
+{% extends 'painel.html.twig' %}
+
+{% block body %}
+    <h1>Barbeiros <a class="btn btn-success pull-right" href="{{ path('barbeiro_new') }}">Novo</a></h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>Sexo</th>
+                <th>Datanascimento</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for barbeiro in barbeiros %}
+            <tr>
+                <td><a href="{{ path('barbeiro_show', { 'id': barbeiro.id }) }}">{{ barbeiro.id }}</a></td>
+                <td>{{ barbeiro.nome }}</td>
+                <td>{{ barbeiro.telefone }}</td>
+                <td>{{ barbeiro.sexo }}</td>
+                <td>{% if barbeiro.dataNascimento %}{{ barbeiro.dataNascimento|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('barbeiro_show', { 'id': barbeiro.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('barbeiro_edit', { 'id': barbeiro.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+            
+    
+{% endblock %}
