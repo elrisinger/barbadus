@@ -3,14 +3,15 @@
 {% block body %}
     <h1>Cadastro de Barbeiros</h1>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+    {{ form_start(form, {'attr': {'novalidate': 'true'  } } )}}
+        {{ form_row(form.nome) }}
+        {{ form_row(form.servico, {'label': 'Serviço'} ) }}
+        {{ form_row(form.telefone) }}
+        {{ form_row(form.sexo) }}
+        {{ form_row(form.dataNascimento) }}
+        
+       <input class="btn btn-success" type="submit" value="Salvar" /> 
+{{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('barbeiro_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    
 {% endblock %}

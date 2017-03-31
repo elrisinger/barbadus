@@ -3,6 +3,9 @@
 namespace BarbadusBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use BarbadusBundle\Entity\Servico;
+use Symfony\Component\Validator\Constraints as Assert;
+
+
 
 /**
  * @ORM\Entity
@@ -19,27 +22,32 @@ class Barbeiro
     
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank(message="O nome é obrigatório.")
      */
     private $nome;
     
     /**
      * @ORM\ManyToOne(targetEntity="Servico")
      * @ORM\JoinColumn(name="servicos_id", referencedColumnName="id")
+     * @Assert\NotBlank(message="O serviço é obrigatório.")
      */
     private $servico;
     
     /**
      * @ORM\Column(type="string", length=15, nullable=TRUE)
+     * @Assert\Regex("/\([0-9].\) {0,1}[9]{0,1}[0-9]{4}-[0-9]{4}/", message="Formato incorreto. Utilizar o formato (99)9999-9999")
      */
     private $telefone;
     
     /**
      * @ORM\Column(type="string", length=1)
+     * @Assert\NotBlank(message="O sexo é obrigatório.")
      */
     private $sexo;
     
     /**
      * @ORM\Column(type="date")
+     * @Assert\GreaterThanOrEqual("1950-01-01", message="A data deve ser superior a {{ compared_value }}")
      */
     private $dataNascimento;
     

@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
-
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class BarbeiroType extends AbstractType
 {
@@ -16,13 +16,20 @@ class BarbeiroType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('nome')
+                ->add('servico')
                 ->add('telefone')
-                ->add('sexo')
+                ->add('sexo', ChoiceType::class, array(
+                    'choices' => array(
+                        "Masculino" => "M",
+                        "Feminino" => "F"
+                    ),
+                    'expanded' => true,
+                    'multiple' => false
+                ))
                 ->add('dataNascimento', BirthdayType::class, array(
                     'format' => 'ddMMyyyy',
                     'label' => 'Data de Nascimento'
-                ))
-                ->add('servico');
+                ));
     }
     
     /**
