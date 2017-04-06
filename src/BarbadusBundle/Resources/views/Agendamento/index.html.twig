@@ -11,6 +11,8 @@
                 <th>Nome</th>
                 <th>Telefone</th>
                 <th>Email</th>
+                <th>Servico</th>
+                <th>Profissional</th>
                 <th>Data Cadastro</th>
                 <th>Data Alteração</th>
                 <th>Status</th>
@@ -25,6 +27,8 @@
                 <td>{{ agendamento.nome }}</td>
                 <td>{{ agendamento.telefone }}</td>
                 <td>{{ agendamento.email }}</td>
+                <td>{{ agendamento.servico }}</td>
+                <td>{{ agendamento.barbeiro }}</td>
                 <td>{% if agendamento.dataCadastro %}{{ agendamento.dataCadastro|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if agendamento.dataAlteracao %}{{ agendamento.dataAlteracao|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ agendamento.status }}</td>

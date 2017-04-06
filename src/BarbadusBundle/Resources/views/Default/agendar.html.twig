@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<div class="container">
+    <div class="jumbotron">
+        <h1>Agendado!</h1>
+        <p>Seu agendamento foi realizado!</p>
+
+        <div>
+            Detalhes do agendamento:
+            
+            {{ dump(info) }}
+        </div>
+        
+    </div>
+</div>
+
+{% endblock %}
+
